@@ -20,6 +20,20 @@ const mixedItems = [
   { type: "video", data: videoItems[4] },
   { type: "message", text: "Grace made visible." },
   { type: "image", data: galleryItems[11] },
+  { type: "image", data: galleryItems[15] },
+  { type: "video", data: videoItems[5] },
+  { type: "message", text: "Every quiet moment shared is a memory I never want to lose." },
+  { type: "image", data: galleryItems[20] },
+  { type: "image", data: galleryItems[25] },
+  { type: "video", data: videoItems[6] },
+  { type: "message", text: "A single smile from you changes the entire day." },
+  { type: "image", data: galleryItems[30] },
+  { type: "image", data: galleryItems[35] },
+  { type: "video", data: videoItems[7] },
+  { type: "message", text: "Even in the simplest moments, you are extraordinary." },
+  { type: "image", data: galleryItems[40] },
+  { type: "video", data: videoItems[10] },
+  { type: "image", data: galleryItems[45] },
 ];
 
 export default function MixedCarousel() {
@@ -37,10 +51,10 @@ export default function MixedCarousel() {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "calc(-100% + 100vw)"]);
 
   return (
-    // The wrapper height determines how long the sticky effect lasts. 300vh = 3 screen heights of scrolling.
+    // The wrapper height determines how long the sticky effect lasts. 600vh = 6 screen heights to slow it down for more items.
     <section 
       ref={targetRef} 
-      className="relative h-[300vh]" 
+      className="relative h-[600vh]" 
       style={{
         background: "var(--bg)", 
         borderTop: "1px solid rgba(244,143,177,0.15)",
@@ -81,9 +95,9 @@ export default function MixedCarousel() {
 function CarouselItem({ item }: { item: any }) {
   if (item.type === "message") {
     return (
-      <div className="flex h-64 w-80 items-center justify-center rounded-[2rem] border border-white/10 bg-[#1f141a] p-8 text-center shadow-2xl md:h-80 md:w-96">
+      <div className="flex h-[26rem] w-[22rem] items-center justify-center rounded-[2.5rem] border border-white/10 bg-[#1f141a] p-10 text-center shadow-[0_20px_50px_rgba(0,0,0,0.3)] md:h-[36rem] md:w-[30rem]">
         <p 
-          className="font-serif text-2xl italic leading-snug text-[rgba(255,248,240,0.85)] md:text-3xl"
+          className="font-serif text-3xl italic leading-snug text-[rgba(255,248,240,0.85)] md:text-5xl"
         >
           "{item.text}"
         </p>
@@ -93,30 +107,30 @@ function CarouselItem({ item }: { item: any }) {
 
   if (item.type === "video") {
     return (
-      <div className="relative h-64 w-64 overflow-hidden rounded-[2rem] border border-white/20 shadow-2xl md:h-80 md:w-80">
+      <div className="relative h-[26rem] w-[22rem] overflow-hidden rounded-[2.5rem] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.3)] md:h-[36rem] md:w-[28rem]">
         <video 
           src={item.data.src} 
           poster={item.data.poster}
-          className="h-full w-full object-cover opacity-80"
+          className="h-full w-full object-cover opacity-85"
           muted 
           loop 
           autoPlay 
           playsInline 
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
       </div>
     );
   }
 
   return (
-    <div className="relative h-64 w-64 overflow-hidden rounded-[2rem] border border-white/20 shadow-2xl md:h-80 md:w-80">
+    <div className="relative h-[26rem] w-[22rem] overflow-hidden rounded-[2.5rem] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.3)] md:h-[36rem] md:w-[28rem]">
       <SmartImage 
         src={item.data.src} 
         alt={item.data.alt} 
         containerClassName="absolute inset-0"
-        sizes="(min-width: 768px) 320px, 256px"
+        sizes="(min-width: 768px) 450px, 350px"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
     </div>
   );
 }
