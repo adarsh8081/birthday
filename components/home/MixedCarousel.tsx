@@ -23,56 +23,55 @@ const mixedItems = [
 ];
 
 export default function MixedCarousel() {
-  const containerRef = useRef(null);
+  const targetRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
+    target: targetRef,
+    // When the top of the container hits the top of the viewport
+    // until the bottom of the container hits the bottom of the viewport
+    offset: ["start start", "end end"],
   });
 
-  // Calculate translation: moves the carousel heavily to the left as you scroll down
-  const xLeft = useTransform(scrollYProgress, [0, 1], ["10%", "-50%"]);
-  
-  // A second track that moves opposite direction for contrast
-  const xRight = useTransform(scrollYProgress, [0, 1], ["-50%", "10%"]);
+  // Moves the content container the full distance required to see the end of the cards
+  // By using percentages with CSS calc, we can perfectly offset the scroll.
+  // We translate left by 100% of the flex row, then back right by 100vw so the last card aligns with the viewport right edge.
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "calc(-100% + 100vw)"]);
 
   return (
+    // The wrapper height determines how long the sticky effect lasts. 300vh = 3 screen heights of scrolling.
     <section 
-      ref={containerRef} 
-      className="relative overflow-hidden py-32 md:py-44" 
+      ref={targetRef} 
+      className="relative h-[300vh]" 
       style={{
         background: "var(--bg)", 
         borderTop: "1px solid rgba(244,143,177,0.15)",
         borderBottom: "1px solid rgba(244,143,177,0.15)"
       }}
     >
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(244,143,177,0.06),transparent_60%)]" />
+      {/* Sticky box pins to viewport */}
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+        <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(244,143,177,0.06),transparent_60%)]" />
 
-      <div className="mx-auto mb-20 max-w-5xl px-6 text-center">
-        <p className="eyebrow">A mixed tape</p>
-        <h2 className="display-title mt-4 text-4xl md:text-5xl text-[#fff8f0]">
-          Snippets of laughter, light, and letters
-        </h2>
-      </div>
-
-      <div className="relative z-10 flex flex-col gap-8 md:gap-12">
-        {/* Track 1: Moving left */}
         <motion.div 
-          className="flex w-max gap-6 px-10 md:gap-10"
-          style={{ x: xLeft }}
+          style={{ x }} 
+          className="relative z-10 flex w-max items-center gap-6 px-10 md:gap-10 md:px-20"
         >
-          {mixedItems.slice(0, 6).map((item, idx) => (
-            <CarouselItem key={`row1-${idx}`} item={item} />
-          ))}
-        </motion.div>
+          {/* Introductory block inside the horizontal scroll */}
+          <div className="flex h-64 w-[80vw] shrink-0 flex-col items-center justify-center rounded-[2rem] p-8 text-center md:h-80 md:w-[40vw]">
+            <p className="eyebrow">A mixed tape</p>
+            <h2 className="display-title mt-4 text-4xl text-[#1f141a] md:text-5xl dark:text-[#fff8f0]">
+              Snippets of laughter, light, and letters
+            </h2>
+            <p className="mt-4 text-[#8b6b77]">Keep scrolling to explore</p>
+          </div>
 
-        {/* Track 2: Moving right */}
-        <motion.div 
-          className="flex w-max gap-6 px-10 md:gap-10"
-          style={{ x: xRight }}
-        >
-          {mixedItems.slice(6, 12).map((item, idx) => (
-            <CarouselItem key={`row2-${idx}`} item={item} />
+          {mixedItems.map((item, idx) => (
+            <div key={`mix-${idx}`} className="shrink-0">
+              <CarouselItem item={item} />
+            </div>
           ))}
+
+          {/* Symmetrical padding at the end */}
+          <div className="w-[10vw] shrink-0" />
         </motion.div>
       </div>
     </section>
