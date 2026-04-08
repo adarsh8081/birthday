@@ -1,0 +1,25 @@
+node_modules
+.next
+out
+.vercel
+.env*.local
+.DS_Store
+*.log
+build_output.txt
+yarn-error.log*
+yarn-debug.log*
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Raw source media (not for deployment)
+images\ and\ videos/
+
+# Utility scripts
+*.py
+replace_theme.js
+app_page_complete.tsx
