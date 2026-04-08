@@ -92,7 +92,7 @@ export default function GalleryGrid({
             )}
             initial={{ opacity: 0, y: 36, rotate: index % 2 === 0 ? -1.2 : 1.2 }}
             whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.05, margin: "50px 0px" }}
             transition={{ duration: 0.9, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -10, scale: 1.01 }}
             onClick={() => setSelectedIndex(index)}

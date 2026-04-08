@@ -39,7 +39,7 @@ export default function SmartImage({
     <div className={cn("relative overflow-hidden rounded-[1.75rem]", containerClassName)}>
       <div
         className={cn(
-          "absolute inset-0 bg-[#f8ecec] transition duration-700",
+          "absolute inset-0 bg-[#ebdce0] transition duration-700",
           !loaded ? "animate-pulse" : "opacity-0",
         )}
       />

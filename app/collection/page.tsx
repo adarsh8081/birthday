@@ -89,9 +89,9 @@ export default function CollectionPage() {
             </p>
           </SectionReveal>
 
-          <SectionReveal className="mt-10" delay={0.12}>
+          <div className="mt-10">
             <GalleryGrid items={galleryItems} variant="archive" />
-          </SectionReveal>
+          </div>
         </div>
       </section>
 

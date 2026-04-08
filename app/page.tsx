@@ -288,7 +288,7 @@ function GallerySection() {
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">Tap any frame to step inside the moment. Navigate with your keyboard or the on-screen controls.</p>
         </motion.div>
-        <SectionReveal><GalleryGrid items={galleryPreview} variant="mosaic" /></SectionReveal>
+        <div className="mt-12"><GalleryGrid items={galleryPreview} variant="mosaic" /></div>
         <span id="collection" className="absolute -top-24" />
         <SectionReveal className="mt-14 flex flex-wrap gap-5" delay={0.15}>
           <Link href="/collection" className="inline-flex items-center gap-3 rounded-full bg-[#2a1520] px-8 py-4 text-[0.78rem] font-semibold uppercase tracking-[0.3em] text-white shadow-[0_20px_50px_rgba(42,21,32,0.22)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_rgba(42,21,32,0.3)]">
