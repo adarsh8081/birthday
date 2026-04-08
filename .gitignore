@@ -23,3 +23,5 @@ images\ and\ videos/
 *.py
 replace_theme.js
 app_page_complete.tsx
+
+.vercel

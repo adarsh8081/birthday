@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Pause, Play, Volume2, VolumeX } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import SmartImage from "@/components/media/SmartImage";
@@ -26,6 +26,15 @@ export default function VideoGrid({
   const [muted, setMuted] = useState(true);
 
   const selected = items[selectedIndex];
+
+  const goNext = () => {
+    setSelectedIndex((i) => (i + 1) % items.length);
+    setPlaying(false);
+  };
+  const goPrev = () => {
+    setSelectedIndex((i) => (i - 1 + items.length) % items.length);
+    setPlaying(false);
+  };
   const shelfItems = useMemo(() => items.slice(0, 8), [items]);
 
   return (
@@ -90,6 +99,29 @@ export default function VideoGrid({
                   playsInline
                 />
               )}
+
+              {/* ── prev / next navigation ── */}
+              <button
+                type="button"
+                aria-label="Previous video"
+                className="absolute left-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/40 text-white backdrop-blur-md transition hover:bg-black/60 hover:scale-110"
+                onClick={goPrev}
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                aria-label="Next video"
+                className="absolute right-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/40 text-white backdrop-blur-md transition hover:bg-black/60 hover:scale-110"
+                onClick={goNext}
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+
+              {/* counter pill */}
+              <div className="absolute right-4 top-4 z-10 rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-[0.65rem] font-semibold tabular-nums tracking-wider text-white/70 backdrop-blur-md">
+                {selectedIndex + 1} / {items.length}
+              </div>
             </div>
 
             <div className="flex flex-col justify-between gap-4 rounded-[2rem] border border-white/10 bg-white/6 p-4 text-white">
