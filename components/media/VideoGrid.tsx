@@ -35,7 +35,6 @@ export default function VideoGrid({
     setSelectedIndex((i) => (i - 1 + items.length) % items.length);
     setPlaying(false);
   };
-  const shelfItems = useMemo(() => items.slice(0, 8), [items]);
 
   return (
     <div className={cn("space-y-10", className)}>
@@ -45,7 +44,7 @@ export default function VideoGrid({
         <p className="mt-6 max-w-2xl text-lg leading-8 text-[#6d5661]">{subheading}</p>
       </div>
 
-      <div className="grid gap-8 xl:grid-cols-[minmax(0,1.08fr)_20rem]">
+      <div className="mx-auto max-w-5xl">
         <motion.div
           className="relative overflow-hidden rounded-[2.5rem] border border-white/60 bg-[#1f141a] p-3 shadow-[0_30px_80px_rgba(55,27,39,0.22)]"
           initial={{ opacity: 0, y: 38 }}
@@ -68,10 +67,7 @@ export default function VideoGrid({
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,7,11,0.16),rgba(15,7,11,0.7))]" />
                   <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.42em] text-white/65">
-                      {selected.date ?? "Birthday reel"}
-                    </p>
-                    <h3 className="mt-4 max-w-3xl font-serif text-4xl leading-none text-white md:text-5xl">
+                    <h3 className="mt-2 max-w-3xl font-serif text-4xl leading-none text-white md:text-5xl">
                       {selected.title}
                     </h3>
                     <p className="mt-4 max-w-2xl text-base leading-7 text-white/78">
@@ -158,69 +154,6 @@ export default function VideoGrid({
                 <p className="mt-4 font-serif text-3xl leading-none">{selected.title}</p>
                 <p className="mt-4 text-sm leading-7 text-white/70">{selected.caption}</p>
               </div>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="glass-panel relative overflow-hidden p-4"
-          initial={{ opacity: 0, y: 44 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(242,135,168,0.12),transparent_55%)]" />
-          <div className="relative">
-            <p className="eyebrow">Reel shelf</p>
-            <div className="mt-5 space-y-3">
-              {shelfItems.map((item, index) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  data-testid={`video-card-${item.id}`}
-                  className={cn(
-                    "group grid w-full grid-cols-[4.8rem_minmax(0,1fr)] items-center gap-3 rounded-[1.4rem] border px-3 py-3 text-left transition duration-300",
-                    index === selectedIndex
-                      ? "border-[#f0acc1] bg-[#2f1f27] text-white shadow-[0_16px_35px_rgba(47,31,39,0.18)]"
-                      : "border-white/60 bg-white/68 text-[#4d3742] hover:-translate-y-0.5 hover:bg-white",
-                  )}
-                  onClick={() => {
-                    setSelectedIndex(index);
-                    setPlaying(false);
-                  }}
-                >
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-[1.1rem]">
-                    <SmartImage
-                      src={item.poster || item.src}
-                      alt={item.title}
-                      containerClassName="absolute inset-0"
-                      className="transition duration-500 group-hover:scale-[1.05]"
-                      sizes="160px"
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <p
-                      className={cn(
-                        "text-[0.62rem] font-semibold uppercase tracking-[0.35em]",
-                        index === selectedIndex ? "text-white/70" : "text-[#866875]",
-                      )}
-                    >
-                      {item.date ?? "Birthday reel"}
-                    </p>
-                    <p className="mt-2 line-clamp-2 font-serif text-2xl leading-none">
-                      {item.title}
-                    </p>
-                    <p
-                      className={cn(
-                        "mt-2 line-clamp-2 text-sm leading-6",
-                        index === selectedIndex ? "text-white/75" : "text-[#6e5662]",
-                      )}
-                    >
-                      {item.caption}
-                    </p>
-                  </div>
-                </button>
-              ))}
             </div>
           </div>
         </motion.div>

@@ -23,6 +23,7 @@ import CandleIntro from "@/components/home/CandleIntro";
 import GalleryGrid from "@/components/media/GalleryGrid";
 import SmartImage from "@/components/media/SmartImage";
 import VideoGrid from "@/components/media/VideoGrid";
+import MixedCarousel from "@/components/home/MixedCarousel";
 import SectionReveal from "@/components/ui/SectionReveal";
 import { galleryItems, videoItems, messageBlocks } from "@/lib/content";
 
@@ -538,6 +539,7 @@ function CelebrationHome() {
       <LetterSection />
       <GallerySection />
       <VideoSection />
+      <MixedCarousel />
       <PersonalMessageSection />
       <FinaleSection />
     </main>

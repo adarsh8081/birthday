@@ -112,9 +112,6 @@ export default function GalleryGrid({
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(37,22,30,0.06),rgba(37,22,30,0.65))]" />
             <div className="absolute inset-x-0 bottom-0 p-5 text-white">
-              <p className="text-[0.66rem] font-semibold uppercase tracking-[0.38em] text-white/70">
-                {item.date ?? "Birthday frame"}
-              </p>
               <p className="mt-2 text-lg font-medium leading-snug md:text-xl">{item.caption}</p>
             </div>
           </motion.button>
@@ -159,10 +156,7 @@ export default function GalleryGrid({
 
                 <div className="flex flex-col justify-between rounded-[1.8rem] border border-white/10 bg-white/8 p-6">
                   <div>
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.38em] text-white/55">
-                      {activeItem.date ?? "Memory still"}
-                    </p>
-                    <h3 className="mt-4 font-serif text-4xl leading-none text-white">
+                    <h3 className="mt-2 font-serif text-4xl leading-none text-white">
                       {activeItem.caption}
                     </h3>
                     <p className="mt-5 text-sm leading-7 text-white/75">{activeItem.alt}</p>

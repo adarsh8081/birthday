@@ -39,8 +39,8 @@ export default function SmartImage({
     <div className={cn("relative overflow-hidden rounded-[1.75rem]", containerClassName)}>
       <div
         className={cn(
-          "absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.82),rgba(244,222,228,0.92),rgba(255,255,255,0.82))] transition duration-700",
-          loaded ? "opacity-0" : "opacity-100",
+          "absolute inset-0 bg-[#f8ecec] transition duration-700",
+          !loaded ? "animate-pulse" : "opacity-0",
         )}
       />
       <Image
