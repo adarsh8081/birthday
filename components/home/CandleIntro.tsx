@@ -107,7 +107,8 @@ export default function CandleIntro({ onComplete }: CandleIntroProps) {
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,227,210,0.5),transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.72))]" />
           <motion.div
-            className="absolute left-1/2 top-10 h-24 w-24 -translate-x-1/2 rounded-full border border-[#f0b7c8] bg-white/55"
+            className="absolute left-1/2 top-10 h-24 w-24 rounded-full border border-[#f0b7c8] bg-white/55"
+            style={{ x: "-50%" }}
             animate={{ scale: [1, 1.2, 1], opacity: [0.45, 0.1, 0.45] }}
             transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
           />
@@ -160,7 +161,8 @@ export default function CandleIntro({ onComplete }: CandleIntroProps) {
 
               <div className="relative mt-4 h-[20rem] w-[11rem]">
                 <motion.div
-                  className="absolute left-1/2 top-12 h-24 w-24 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,212,135,0.8),rgba(255,159,67,0.26),transparent_72%)] blur-xl"
+                  className="absolute left-1/2 top-12 h-24 w-24 rounded-full bg-[radial-gradient(circle,rgba(255,212,135,0.8),rgba(255,159,67,0.26),transparent_72%)] blur-xl"
+                  style={{ x: "-50%" }}
                   animate={{ opacity: stage === "idle" ? 1 : 0.25, scale: stage === "idle" ? [1, 1.08, 1] : 0.75 }}
                   transition={{ duration: 1.8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
                 />
@@ -169,10 +171,11 @@ export default function CandleIntro({ onComplete }: CandleIntroProps) {
                   {stage === "idle" ? (
                     <motion.div
                       key="flame"
-                      className="absolute left-1/2 top-1 h-20 w-12 -translate-x-1/2 rounded-[100%_100%_70%_70%/100%_100%_40%_40%] bg-[radial-gradient(circle_at_50%_20%,#fff6c8_0%,#ffd567_38%,#ff8e47_72%,rgba(255,142,71,0.12)_100%)] shadow-[0_0_45px_rgba(255,181,85,0.5)]"
-                      initial={{ opacity: 0, scale: 0.7, y: 10 }}
-                      animate={{ opacity: 1, scale: [1, 0.92, 1.06, 1], y: [0, -4, 2, 0], rotate: [0, -3, 3, 0] }}
-                      exit={{ opacity: 0, scale: 0.45, y: -22 }}
+                      className="absolute left-1/2 top-1 h-20 w-12 rounded-[100%_100%_70%_70%/100%_100%_40%_40%] bg-[radial-gradient(circle_at_50%_20%,#fff6c8_0%,#ffd567_38%,#ff8e47_72%,rgba(255,142,71,0.12)_100%)] shadow-[0_0_45px_rgba(255,181,85,0.5)]"
+                      style={{ originX: 0.5, originY: 1 }}
+                      initial={{ opacity: 0, scale: 0.7, y: 10, x: "-50%" }}
+                      animate={{ opacity: 1, scale: [1, 0.92, 1.06, 1], y: [0, -4, 2, 0], x: "-50%", rotate: [0, -3, 3, 0] }}
+                      exit={{ opacity: 0, scale: 0.45, y: -22, x: "-50%" }}
                       transition={{ duration: 1.8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
                     />
                   ) : null}
@@ -182,10 +185,10 @@ export default function CandleIntro({ onComplete }: CandleIntroProps) {
                   {stage !== "idle" ? (
                     <motion.div
                       key="smoke"
-                      className="absolute left-1/2 top-3 h-20 w-20 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(171,152,160,0.28),rgba(171,152,160,0.06),transparent_70%)] blur-md"
-                      initial={{ opacity: 0, scale: 0.6, y: 18 }}
-                      animate={{ opacity: [0.24, 0.45, 0], scale: [0.7, 1.2, 1.5], y: [12, -10, -48] }}
-                      exit={{ opacity: 0 }}
+                      className="absolute left-1/2 top-3 h-20 w-20 rounded-full bg-[radial-gradient(circle,rgba(171,152,160,0.28),rgba(171,152,160,0.06),transparent_70%)] blur-md"
+                      initial={{ opacity: 0, scale: 0.6, y: 18, x: "-50%" }}
+                      animate={{ opacity: [0.24, 0.45, 0], scale: [0.7, 1.2, 1.5], y: [12, -10, -48], x: "-50%" }}
+                      exit={{ opacity: 0, x: "-50%" }}
                       transition={{ duration: 1.2, ease: "easeOut" }}
                     />
                   ) : null}
