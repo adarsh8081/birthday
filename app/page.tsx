@@ -556,7 +556,7 @@ const LOADER_STORAGE_KEY = "ishika-birthday-loader";
 const dateDigits = [
   { label: "09", sub: "day" },
   { label: "04", sub: "month" },
-  { label: "2003", sub: "year" },
+  { label: "2004", sub: "year" },
 ];
 
 function BirthdayLoader({ onComplete }: { onComplete: () => void }) {
@@ -587,10 +587,10 @@ function BirthdayLoader({ onComplete }: { onComplete: () => void }) {
     return () => timers.forEach(clearTimeout);
   }, [onComplete]);
 
-  /* age counter 0→23 */
+  /* age counter 0→22 */
   useEffect(() => {
     if (phase !== "age" && phase !== "message" && phase !== "exit") return;
-    if (counter >= 23) return;
+    if (counter >= 22) return;
     const step = setTimeout(() => setCounter((c) => c + 1), 45);
     return () => clearTimeout(step);
   }, [phase, counter]);
