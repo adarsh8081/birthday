@@ -70,12 +70,12 @@ export default function MixedCarousel() {
           className="relative z-10 flex w-max items-center gap-6 px-10 md:gap-10 md:px-20"
         >
           {/* Introductory block inside the horizontal scroll */}
-          <div className="flex h-64 w-[80vw] shrink-0 flex-col items-center justify-center rounded-[2rem] p-8 text-center md:h-80 md:w-[40vw]">
-            <p className="eyebrow">A mixed tape</p>
-            <h2 className="display-title mt-4 text-4xl text-[#1f141a] md:text-5xl dark:text-[#fff8f0]">
+          <div className="flex h-64 w-[75vw] shrink-0 flex-col items-center justify-center rounded-[2rem] p-6 text-center md:h-80 md:w-[35vw]">
+            <p className="eyebrow text-[rgba(244,143,177,0.8)]">A mixed tape</p>
+            <h2 className="display-title mt-4 text-[clamp(2rem,6vw,4rem)] leading-tight text-[#fff8f0]">
               Snippets of laughter, light, and letters
             </h2>
-            <p className="mt-4 text-[#8b6b77]">Keep scrolling to explore</p>
+            <p className="mt-4 text-[0.85rem] uppercase tracking-widest text-[rgba(255,248,240,0.5)]">Keep scrolling to explore</p>
           </div>
 
           {mixedItems.map((item, idx) => (
