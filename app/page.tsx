@@ -763,7 +763,7 @@ function BirthdayLoader({ onComplete }: { onComplete: () => void }) {
                   fontStyle: "italic",
                 }}
               >
-                Happy 23<sup className="text-[0.6em]">rd</sup> Birthday, Ishika
+                Happy 22<sup className="text-[0.6em]">nd</sup> Birthday, Ishika
               </p>
             </motion.div>
           </motion.div>
